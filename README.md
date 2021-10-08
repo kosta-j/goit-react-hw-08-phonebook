@@ -1,3 +1,3 @@
 ## Phonebook app
 
-Version 4 - with redux
+Version 6 - with authorisation and external backend
