@@ -1,0 +1,9 @@
+.section {
+  margin-top: 30px;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #e4fafa;
+  border-radius: 5px;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
