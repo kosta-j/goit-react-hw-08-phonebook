@@ -1,3 +1,3 @@
 ## Phonebook app
 
-Version 6 - with authorisation and external backend
+Version 6 - with authorization and external backend
