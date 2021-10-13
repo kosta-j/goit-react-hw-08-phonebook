@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Section } from '../../components';
-import { authOperations } from '../../Redux/auth';
-import s from './SignupView.module.css';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
-import { routes } from '../../utils/routes';
+import { Field, Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
+import { Section } from '../../components';
+import { routes } from '../../utils/routes';
 
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const userNameValidation =
+  /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
 const SignupSchema = Yup.object().shape({
   userName: Yup.string()
+    .matches(
+      userNameValidation,
+      'Name can only consist of letters, apostrophes, dashes and spaces.',
+    )
     .min(3, 'Too Short!')
-    .max(30, 'Too Long!')
+    .max(20, 'Too Long!')
     .required('Name required'),
   email: Yup.string().email('Invalid email').required('Email required'),
   password: Yup.string()
@@ -45,13 +45,11 @@ export default function SignupView() {
   //   }
   // };
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   dispatch(authOperations.register({ name, email, password }));
-  //   setName('');
-  //   setEmail('');
-  //   setPassword('');
-  // };
+  const handleSubmit = e => {
+    // e.preventDefault();
+    // dispatch(authOperations.register({ name, email, password }));
+    console.log('form submitted');
+  };
 
   return (
     <Section title="Sign up page">
@@ -67,14 +65,19 @@ export default function SignupView() {
           console.log(values);
         }}
       >
-        {({ errors, touched }) => (
+        {({ errors, touched, isSubmitting }) => (
           <Form>
+            <label htmlFor="userName">Name: </label>
             <Field name="userName" placeholder="Enter name" />
             {errors.userName && touched.userName ? (
               <div>{errors.userName}</div>
             ) : null}
+
+            <label htmlFor="email">Email: </label>
             <Field name="email" type="email" placeholder="Enter email" />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
+
+            <label htmlFor="password">Password: </label>
             <Field
               name="password"
               type="password"
@@ -83,7 +86,17 @@ export default function SignupView() {
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
             ) : null}
-            <button type="submit">Submit</button>
+            {console.log(Object.keys(errors).length)}
+            <button
+              type="submit"
+              disabled={
+                isSubmitting ||
+                Object.keys(errors).length !== 0 ||
+                Object.keys(touched).length === 0
+              }
+            >
+              Sign up
+            </button>
           </Form>
         )}
       </Formik>
