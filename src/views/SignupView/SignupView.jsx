@@ -1,7 +1,8 @@
-import s from './SignupView.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperations from '../../Redux/auth';
+import Section from '../../components/Section/Section';
+import { authOperations } from '../../Redux/auth';
+import s from './SignupView.module.css';
 
 export default function SignupView() {
   const [name, setName] = useState('');
@@ -35,49 +36,51 @@ export default function SignupView() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <p className={s.inputTitle}>Name</p>
-        <input
-          type="text"
-          name="name"
-          className={s.input}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-          required
-          value={name}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        <p className={s.inputTitle}>email</p>
-        <input
-          type="email"
-          name="email"
-          className={s.input}
-          pattern="(\w\.?)+@[\w\.-]+\.\w{2,}"
-          title="email может быть формата something@else.tld"
-          required
-          value={email}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        <p className={s.inputTitle}>password</p>
-        <input
-          type="password"
-          name="password"
-          className={s.input}
-          //   pattern="(\w\.?)+@[\w\.-]+\.\w{2,}"
-          title="just password"
-          required
-          value={password}
-          onChange={handleChange}
-        />
-      </label>
-      <button type="submit" className={s.submitBtn}>
-        Sign up
-      </button>
-    </form>
+    <Section title="Sign up page">
+      <form onSubmit={handleSubmit}>
+        <label>
+          <p className={s.inputTitle}>Name</p>
+          <input
+            type="text"
+            name="name"
+            className={s.input}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+            required
+            value={name}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          <p className={s.inputTitle}>email</p>
+          <input
+            type="email"
+            name="email"
+            className={s.input}
+            pattern="(\w\.?)+@[\w\.-]+\.\w{2,}"
+            title="email может быть формата something@else.tld"
+            required
+            value={email}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          <p className={s.inputTitle}>password</p>
+          <input
+            type="password"
+            name="password"
+            className={s.input}
+            //   pattern="(\w\.?)+@[\w\.-]+\.\w{2,}"
+            title="just password"
+            required
+            value={password}
+            onChange={handleChange}
+          />
+        </label>
+        <button type="submit" className={s.submitBtn}>
+          Sign up
+        </button>
+      </form>
+    </Section>
   );
 }

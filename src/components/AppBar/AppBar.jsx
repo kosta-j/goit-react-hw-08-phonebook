@@ -1,8 +1,8 @@
-import s from './NavBar.module.css';
+import s from './AppBar.module.css';
 
 export default function AppBar() {
   return (
-    <header>
+    <header className={s.AppBar}>
       <nav>
         <ul>
           <li>Log in</li>

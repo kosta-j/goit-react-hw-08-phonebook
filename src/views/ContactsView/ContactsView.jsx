@@ -1,8 +1,8 @@
-import ContactForm from '../../components/ContactForm';
-import ContactList from '../../components/ContactList';
-import Filter from '../../components/Filter';
-import Section from '../../components/Filter';
-import s from './Wrapper.module.css';
+import { ContactForm } from '../../components';
+import { ContactList } from '../../components';
+import { Filter } from '../../components';
+import { Section } from '../../components';
+import s from './ContactsView.module.css';
 
 export default function ContactsView() {
   return (

@@ -23,9 +23,11 @@ input {
 
 .wrapper {
   display: flex;
+  padding: 20px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 20px;
   color: #272727;
+  background-color: #4e4d4d;
 }

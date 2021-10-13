@@ -1,4 +1,5 @@
-export * as ContactForm from './ContactForm/ContactForm';
-export * as ContactList from './ContactList/ContactList';
-export * as Filter from './Filter/Filter';
-export * as Section from './Section/Section';
+export { default as ContactForm } from './ContactForm/ContactForm';
+export { default as ContactList } from './ContactList/ContactList';
+export { default as Filter } from './Filter/Filter';
+export { default as Section } from './Section/Section';
+export { default as AppBar } from './AppBar/AppBar';
