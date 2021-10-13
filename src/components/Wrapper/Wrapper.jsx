@@ -1,9 +1,10 @@
 import { Route, Switch } from 'react-router';
-import AuthView from '../../views/AuthView/AuthView';
-import ContactsView from '../../views/ContactsView/ContactsView';
-import HomeView from '../../views/HomeView/HomeView';
-import SignupView from '../../views/SignupView/SignupView';
-import AppBar from '../AppBar/AppBar';
+import { AuthView } from '../../views';
+import { ContactsView } from '../../views';
+import { HomeView } from '../../views';
+import { SignupView } from '../../views';
+import { AppBar } from '../';
+import { routes } from '../../utils/routes';
 import s from './Wrapper.module.css';
 
 export default function Wrapper() {
@@ -11,10 +12,10 @@ export default function Wrapper() {
     <div className={s.wrapper}>
       <AppBar />
       <Switch>
-        <Route path="/" component={HomeView} exact />
-        <Route path="/register" component={SignupView} />
-        <Route path="/login" component={AuthView} />
-        <Route path="/contacts" component={ContactsView} />
+        <Route path={routes.home} component={HomeView} exact />
+        <Route path={routes.register} component={SignupView} />
+        <Route path={routes.login} component={AuthView} />
+        <Route path={routes.contacts} component={ContactsView} />
       </Switch>
     </div>
   );

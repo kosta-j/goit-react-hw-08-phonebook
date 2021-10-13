@@ -1,4 +1,4 @@
-import Title from '../Title/Title';
+import { Title } from '../';
 import s from './Section.module.css';
 
 function Section({ title, children }) {

@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, fetchContact } from '../../Redux/operations';
 import { getContacts, getVisibleContacts } from '../../Redux/selectors';
-import Notification from '../Notification/Notification';
-import ContactItem from './ContactItem';
+import { Notification } from '../';
+import { ContactItem } from '../';
 import s from './ContactList.module.css';
 
 export default function ContactList() {
