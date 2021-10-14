@@ -1,10 +1,16 @@
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Section } from '../../components';
 import * as Yup from 'yup';
 import { routes } from '../../utils/routes';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import s from './SignupView.module.css';
 
 const userNameValidation =
   /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
@@ -37,10 +43,15 @@ export default function SignupView() {
     },
   });
 
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
+
   return (
     <div>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} className={s.signupForm}>
         <TextField
+          className={s.formField}
           fullWidth
           id="userName"
           name="userName"
@@ -50,8 +61,10 @@ export default function SignupView() {
           onBlur={formik.handleBlur}
           error={formik.touched.userName && Boolean(formik.errors.userName)}
           helperText={formik.touched.userName && formik.errors.userName}
+          InputProps={{ className: s.formField }}
         />
         <TextField
+          className={s.formField}
           fullWidth
           id="email"
           name="email"
@@ -61,18 +74,35 @@ export default function SignupView() {
           onBlur={formik.handleBlur}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          InputProps={{ className: s.formField }}
         />
         <TextField
+          className={s.formField}
           fullWidth
           id="password"
           name="password"
           label="Password"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          InputProps={{
+            className: s.formField,
+            // <-- This is where the toggle button is added.
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
         <Button
           color="primary"
