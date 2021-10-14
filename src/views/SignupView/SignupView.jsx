@@ -11,6 +11,18 @@ import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import s from './SignupView.module.css';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& .MuiFormHelperText-root': {
+      marginBottom: '10px',
+    },
+    '& .MuiInputBase-root.MuiOutlinedInput-root': {
+      marginBottom: '10px', // or black
+    },
+  },
+}));
 
 const userNameValidation =
   /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
@@ -31,6 +43,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 export default function SignupView() {
+  const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
     initialValues: {
       userName: '',
@@ -43,15 +56,16 @@ export default function SignupView() {
     },
   });
 
-  const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
+  const customStyles = useStyles();
+
   return (
-    <div>
-      <form onSubmit={formik.handleSubmit} className={s.signupForm}>
+    <Section title={'Registration page'}>
+      <form onSubmit={formik.handleSubmit} className={s.form}>
         <TextField
-          className={s.formField}
+          className={customStyles.root}
           fullWidth
           id="userName"
           name="userName"
@@ -64,7 +78,7 @@ export default function SignupView() {
           InputProps={{ className: s.formField }}
         />
         <TextField
-          className={s.formField}
+          className={customStyles.root}
           fullWidth
           id="email"
           name="email"
@@ -77,7 +91,7 @@ export default function SignupView() {
           InputProps={{ className: s.formField }}
         />
         <TextField
-          className={s.formField}
+          className={customStyles.root}
           fullWidth
           id="password"
           name="password"
@@ -119,6 +133,6 @@ export default function SignupView() {
         </Button>
       </form>
       <Link to={routes.login}>Have an account? - Log in</Link>
-    </div>
+    </Section>
   );
 }
