@@ -12,6 +12,8 @@ import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { makeStyles } from '@material-ui/core/styles';
+import { authOperations } from '../../Redux/auth';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,6 +35,7 @@ const SignupSchema = Yup.object().shape({
 
 export default function AuthView() {
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -41,7 +44,9 @@ export default function AuthView() {
     },
     validationSchema: SignupSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      const { email, password } = values;
+      dispatch(authOperations.logIn({ email, password }));
+      formik.resetForm();
     },
   });
 
