@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Section } from '../../components';
 import * as Yup from 'yup';
@@ -12,6 +13,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import s from './SignupView.module.css';
 import { makeStyles } from '@material-ui/core/styles';
+import { authOperations } from '../../Redux/auth';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,13 +26,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const userNameValidation =
+const nameValidation =
   /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
 const SignupSchema = Yup.object().shape({
-  userName: Yup.string()
+  name: Yup.string()
     .matches(
-      userNameValidation,
+      nameValidation,
       'Name can only consist of letters, apostrophes, dashes and spaces.',
     )
     .min(3, 'Too Short!')
@@ -38,21 +40,24 @@ const SignupSchema = Yup.object().shape({
     .required('Name required'),
   email: Yup.string().email('Invalid email').required('Email required'),
   password: Yup.string()
+    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
     .min(8, 'Too Short! Should be 8 chars minimum.')
     .required('Password required'),
 });
 
 export default function SignupView() {
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      userName: '',
+      name: '',
       email: '',
       password: '',
     },
     validationSchema: SignupSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 3));
+      const { name, email, password } = values;
+      dispatch(authOperations.register({ name, email, password }));
     },
   });
 
@@ -63,18 +68,19 @@ export default function SignupView() {
 
   return (
     <Section title={'Registration page'}>
+      {/* {console.log(formik.handleSubmit)} */}
       <form onSubmit={formik.handleSubmit} className={s.form}>
         <TextField
           className={customStyles.root}
           fullWidth
-          id="userName"
-          name="userName"
+          id="name"
+          name="name"
           label="Name"
-          value={formik.values.userName}
+          value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          error={formik.touched.userName && Boolean(formik.errors.userName)}
-          helperText={formik.touched.userName && formik.errors.userName}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
           InputProps={{ className: s.formField }}
         />
         <TextField

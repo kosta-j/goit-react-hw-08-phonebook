@@ -6,11 +6,19 @@ const initialState = {
   token: null,
   isLoggedIn: false,
 };
+// console.log('authOperations:', authOperations);
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    [authOperations.register.fullfilled](state, action) {},
+    [authOperations.register.fullfilled](state, action) {
+      console.log('register fullfilled');
+    },
+    [authOperations.register.rejected](state, action) {
+      console.log(action.error);
+    },
   },
 });
+
+export default authSlice.reducer;
