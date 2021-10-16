@@ -14,6 +14,9 @@ import { authReducer } from './auth';
 
 import contactsReducer from './reducers';
 
+console.log('authReducer:', authReducer);
+console.log('contactsReducer:', contactsReducer);
+
 // const authPersistConfig = {
 //   key: 'auth',
 //   storage,
@@ -32,7 +35,7 @@ import contactsReducer from './reducers';
 
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
+    auth: authReducer.default,
     contacts: contactsReducer,
   },
   // middleware: middleware,

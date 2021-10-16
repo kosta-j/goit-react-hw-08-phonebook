@@ -58,6 +58,7 @@ export default function SignupView() {
     onSubmit: values => {
       const { name, email, password } = values;
       dispatch(authOperations.register({ name, email, password }));
+      formik.resetForm();
     },
   });
 
