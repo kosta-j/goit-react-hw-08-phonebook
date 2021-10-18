@@ -4,6 +4,11 @@ li {
   padding: 0;
   list-style: none;
 }
-.AppBar {
+.container {
   display: flex;
+  align-items: center;
+}
+
+.link {
+  margin-right: 10px;
 }

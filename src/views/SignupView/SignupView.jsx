@@ -139,7 +139,8 @@ export default function SignupView() {
           Sign up
         </Button>
       </form>
-      <Link to={routes.login}>Have an account? - Log in</Link>
+      <span>Have an account? - </span>
+      <Link to={routes.login}>Log in</Link>
     </Section>
   );
 }

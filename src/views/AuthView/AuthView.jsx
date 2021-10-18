@@ -113,7 +113,8 @@ export default function AuthView() {
           Log in
         </Button>
       </form>
-      <Link to={routes.register}>Do not have an account? - Sign up</Link>
+      <span>Do not have an account? - </span>
+      <Link to={routes.register}>Sign up</Link>
     </Section>
   );
 }
