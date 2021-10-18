@@ -5,6 +5,10 @@ li {
   list-style: none;
 }
 
+img {
+  display: block;
+}
+
 .AppBar {
   display: flex;
   justify-content: center;
@@ -16,7 +20,7 @@ li {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   padding: 5px 20px;
 }
 
@@ -31,4 +35,9 @@ li {
   justify-content: end;
   align-items: center;
   width: 50%;
+}
+
+.avatar {
+  margin-right: 5px;
+  border-radius: 50%;
 }
