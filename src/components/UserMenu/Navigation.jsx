@@ -5,30 +5,31 @@ import s from './UserMenu.module.css';
 const styles = {
   link: {
     color: 'green',
-    marginLeft: '10px',
+    marginRight: '10px',
   },
   activeLink: {
     color: 'red',
   },
 };
 
-export default function AuthNav() {
+export default function Navigation() {
   return (
-    <div className={s.container}>
+    <nav className={s.navContainer}>
       <NavLink
-        to={routes.register}
+        exact
+        to={routes.home}
         style={styles.link}
         activeStyle={styles.activeLink}
       >
-        Sign up
+        Home
       </NavLink>
       <NavLink
-        to={routes.login}
+        to={routes.contacts}
         style={styles.link}
         activeStyle={styles.activeLink}
       >
-        Log in
+        Contacts
       </NavLink>
-    </div>
+    </nav>
   );
 }

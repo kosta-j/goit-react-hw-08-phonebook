@@ -4,11 +4,31 @@ li {
   padding: 0;
   list-style: none;
 }
-.container {
+
+.AppBar {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-.link {
-  margin-right: 10px;
+.headerWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  padding: 5px 20px;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.userMenuContainer {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 50%;
 }

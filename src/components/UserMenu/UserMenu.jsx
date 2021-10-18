@@ -8,7 +8,7 @@ export default function UserMenu() {
   const dispatch = useDispatch();
   const name = useSelector(authSelectors.getUserName);
   return (
-    <div className={s.container}>
+    <div className={s.userMenuContainer}>
       <img src="/" alt="avatar" className={s.avatar} />
       <span>Wellcome, {name}</span>
       <button type="button" onClick={() => dispatch(authOperations.logOut())}>

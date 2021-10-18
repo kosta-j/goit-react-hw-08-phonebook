@@ -6,7 +6,7 @@ import s from './ContactsView.module.css';
 
 export default function ContactsView() {
   return (
-    <div className={s.wrapper}>
+    <>
       <Section title="Phonebook">
         <ContactForm />
       </Section>
@@ -14,6 +14,6 @@ export default function ContactsView() {
         <Filter />
         <ContactList />
       </Section>
-    </div>
+    </>
   );
 }
