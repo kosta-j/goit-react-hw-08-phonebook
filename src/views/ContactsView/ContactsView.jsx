@@ -2,7 +2,7 @@ import { ContactForm } from '../../components';
 import { ContactList } from '../../components';
 import { Filter } from '../../components';
 import { Section } from '../../components';
-import s from './ContactsView.module.css';
+// import s from './ContactsView.module.css';
 
 export default function ContactsView() {
   return (

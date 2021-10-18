@@ -4,7 +4,6 @@ import s from './UserMenu.module.css';
 
 const styles = {
   link: {
-    color: 'green',
     marginLeft: '10px',
   },
   activeLink: {

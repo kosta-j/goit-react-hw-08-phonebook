@@ -6,7 +6,6 @@ import s from './UserMenu.module.css';
 
 const styles = {
   link: {
-    color: 'green',
     marginRight: '10px',
   },
   activeLink: {

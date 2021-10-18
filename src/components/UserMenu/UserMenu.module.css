@@ -9,6 +9,10 @@ img {
   display: block;
 }
 
+a:visited {
+  color: black;
+}
+
 .AppBar {
   display: flex;
   justify-content: center;
@@ -33,7 +37,7 @@ img {
 
 .userMenuContainer {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   width: 50%;
 }
