@@ -5,6 +5,8 @@ import { AppBar } from '../';
 import { routes } from '../../utils/routes';
 import s from './Wrapper.module.css';
 import { authOperations } from '../../Redux/auth';
+import PrivateRoute from '../PrivateRoute';
+import PublicRoute from '../PublicRoute';
 
 const HomeView = lazy(() => import('../../views/HomeView/HomeView'));
 const ContactsView = lazy(() =>
@@ -23,10 +25,18 @@ export default function Wrapper() {
       <AppBar />
       <Switch>
         <Suspense fallback={<p>Loading...</p>}>
-          <Route exact path={routes.home} component={HomeView} />
-          <Route path={routes.register} component={SignupView} />
-          <Route path={routes.login} component={AuthView} />
-          <Route path={routes.contacts} component={ContactsView} />
+          <PublicRoute exact path={routes.home}>
+            <HomeView />
+          </PublicRoute>
+          <PublicRoute path={routes.register} restricted>
+            <SignupView />
+          </PublicRoute>
+          <PublicRoute path={routes.login} restricted>
+            <AuthView />
+          </PublicRoute>
+          <PrivateRoute path={routes.contacts}>
+            <ContactsView />
+          </PrivateRoute>
         </Suspense>
       </Switch>
     </div>
