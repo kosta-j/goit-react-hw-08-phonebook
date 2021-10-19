@@ -7,13 +7,16 @@ import App from './App';
 import './index.css';
 import { store, persistor } from './Redux/store';
 import reportWebVitals from './reportWebVitals';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <App />
+          <StyledEngineProvider injectFirst>
+            <App />
+          </StyledEngineProvider>
         </BrowserRouter>
       </PersistGate>
     </Provider>

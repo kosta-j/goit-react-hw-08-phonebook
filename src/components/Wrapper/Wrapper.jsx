@@ -25,25 +25,27 @@ export default function Wrapper() {
   }, [dispatch]);
   return (
     !isFetchingCurrentUser && (
-      <div className={s.wrapper}>
+      <>
         <AppBar />
-        <Switch>
-          <Suspense fallback={<p>Loading...</p>}>
-            <PublicRoute exact path={routes.home}>
-              <HomeView />
-            </PublicRoute>
-            <PublicRoute path={routes.register} restricted>
-              <SignupView />
-            </PublicRoute>
-            <PublicRoute path={routes.login} restricted>
-              <AuthView />
-            </PublicRoute>
-            <PrivateRoute path={routes.contacts}>
-              <ContactsView />
-            </PrivateRoute>
-          </Suspense>
-        </Switch>
-      </div>
+        <div className={s.wrapper}>
+          <Switch>
+            <Suspense fallback={<p>Loading...</p>}>
+              <PublicRoute exact path={routes.home}>
+                <HomeView />
+              </PublicRoute>
+              <PublicRoute path={routes.register} restricted>
+                <SignupView />
+              </PublicRoute>
+              <PublicRoute path={routes.login} restricted>
+                <AuthView />
+              </PublicRoute>
+              <PrivateRoute path={routes.contacts}>
+                <ContactsView />
+              </PrivateRoute>
+            </Suspense>
+          </Switch>
+        </div>
+      </>
     )
   );
 }

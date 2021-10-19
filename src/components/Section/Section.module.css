@@ -2,8 +2,8 @@
   margin-bottom: 20px;
   padding: 20px;
   width: 100%;
-  max-width: 500px;
-  background-color: #e4fafa;
+  max-width: var(--default-width);
+  background-color: white;
   border-radius: 5px;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }

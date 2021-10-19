@@ -6,3 +6,5 @@ export { default as Title } from './Title/Title';
 export { default as Filter } from './Filter/Filter';
 export { default as Section } from './Section/Section';
 export { default as AppBar } from './UserMenu/AppBar';
+export { default as FormBottomText } from './FormBottomText/FormBottomText';
+export { default as Wrapper } from './Wrapper/Wrapper';

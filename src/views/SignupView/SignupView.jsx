@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Section } from '../../components';
+import { FormBottomText } from '../../components';
 import * as Yup from 'yup';
 import { routes } from '../../utils/routes';
 import Button from '@mui/material/Button';
@@ -69,7 +70,6 @@ export default function SignupView() {
 
   return (
     <Section title={'Registration page'}>
-      {/* {console.log(formik.handleSubmit)} */}
       <form onSubmit={formik.handleSubmit} className={s.form}>
         <TextField
           className={customStyles.root}
@@ -139,8 +139,10 @@ export default function SignupView() {
           Sign up
         </Button>
       </form>
-      <span>Have an account? - </span>
-      <Link to={routes.login}>Log in</Link>
+      <FormBottomText>
+        <span>Have an account? - </span>
+        <Link to={routes.login}>Log in</Link>
+      </FormBottomText>
     </Section>
   );
 }

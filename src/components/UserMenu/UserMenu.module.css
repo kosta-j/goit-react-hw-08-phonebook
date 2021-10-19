@@ -9,15 +9,18 @@ img {
   display: block;
 }
 
+a,
 a:visited {
-  color: black;
+  color: white;
 }
 
 .AppBar {
+  position: sticky;
   display: flex;
+  margin-bottom: 10px;
   justify-content: center;
   width: 100%;
-  border-bottom: 1px solid black;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
 .headerWrapper {
@@ -32,7 +35,7 @@ a:visited {
 .navContainer {
   display: flex;
   align-items: center;
-  width: 50%;
+  /* width: 50%; */
 }
 
 .userMenuContainer {

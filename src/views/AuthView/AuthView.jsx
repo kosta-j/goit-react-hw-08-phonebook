@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Section } from '../../components';
+import { FormBottomText } from '../../components';
 import * as Yup from 'yup';
 import { routes } from '../../utils/routes';
 import Button from '@mui/material/Button';
@@ -113,8 +114,10 @@ export default function AuthView() {
           Log in
         </Button>
       </form>
-      <span>Do not have an account? - </span>
-      <Link to={routes.register}>Sign up</Link>
+      <FormBottomText>
+        <span>Do not have an account? - </span>
+        <Link to={routes.register}>Sign up</Link>
+      </FormBottomText>
     </Section>
   );
 }
